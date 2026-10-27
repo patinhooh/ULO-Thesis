@@ -1,0 +1,67 @@
+name: Build LaTeX Document
+on:
+  push:
+    branches: ["**"]
+    paths:
+      - ".github/workflows/build-latex.yml"
+      - ".latexmkrc"
+      - "Annexes/**"
+      - "Appendices/**"
+      - "Bibliography/**"
+      - "Chapters/**"
+      - "Code/**"
+      - "Configurations/**"
+      - "Figures/**"
+      - "Matter/**"
+      - "Metadata/**"
+      - "Variables/**"
+      - "ULOMain.tex"
+      - "ULOThesis.cls"
+
+  pull_request:
+    paths:
+      - ".github/workflows/build-latex.yml"
+      - ".latexmkrc"
+      - "Annexes/**"
+      - "Appendices/**"
+      - "Bibliography/**"
+      - "Chapters/**"
+      - "Code/**"
+      - "Configurations/**"
+      - "Figures/**"
+      - "Matter/**"
+      - "Metadata/**"
+      - "Variables/**"
+      - "ULOMain.tex"
+      - "ULOThesis.cls"
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v7
+
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: ULOMain.tex
+          latexmk_use_xelatex: true
+          latexmk_shell_escape: true
+          extra_fonts: |
+            ./Configurations/Fonts/*.ttf
+            ./Configurations/Fonts/*.otf
+
+      - name: Upload PDF file
+        uses: actions/upload-artifact@v7
+        with:
+          name: report.pdf
+          path: ULOMain.pdf
+          archive: false
+          if-no-files-found: error
+          retention-days: 90

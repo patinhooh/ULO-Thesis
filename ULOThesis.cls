@@ -162,6 +162,7 @@
     % pdfview=FitH: internal links/bookmarks fit the page width instead of
     % jumping to a raw (x,y) coordinate at the viewer's current zoom level.
 \RequirePackage[symbols,acronym]{glossaries} % Create glossaries and acronyms.
+\glsdisablehyper
 \RequirePackage[calc,datesep={/}]{datetime2} % Enhanced date and time formatting.
 \RequirePackage{xparse} % Advanced argument parsing for custom macros.
 \RequirePackage{typearea} % Page layout adjustments (KOMA-Script).
@@ -174,8 +175,8 @@
 \RequirePackage{soul} % A better underline.
 \RequirePackage{mfirstuc} % Capitalise words in a sentence.
 \RequirePackage{tikz} % Create high-quality graphics programmatically.
-\RequirePackage{psvectorian} % To include in-text ornamatentions. 
 \RequirePackage{blindtext} % Generate placeholder text.
+\RequirePackage[colorinlistoftodos,textwidth=0.9\marginparwidth,textsize=tiny]{todonotes} % Better todo notes
 
 \tcbuselibrary{most} % Load most libraries from the tcolorbox package.
 \WarningsOff[blindtext] % Suppress warnings from the blindtext package.

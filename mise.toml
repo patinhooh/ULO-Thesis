@@ -1,0 +1,175 @@
+[tools]
+perl = "latest"
+tinytex = "latest"
+
+#
+# Project Tasks
+
+[tasks.build]
+description = "Build"
+sources = ["**/*.tex", "**/*.bib", "**/*.sty", "**/*.cls", "Code/**/*"]
+outputs = ["*.pdf"]
+run = "latexmk"
+
+[tasks.clean]
+description = "Clean LaTeX build artifacts"
+run = """
+latexmk -C
+rm -rf .aux
+"""
+
+[tasks.rebuild]
+description = "Clean and rebuild"
+run = [{ task = "clean" }, { task = "build" }]
+
+[tasks.watch]
+description = "Watch and rebuild"
+run = "latexmk -pvc"
+
+[tasks.format]
+description = "Format all LaTeX source files"
+run = """
+shopt -s globstar nullglob
+mkdir -p .aux
+files=( **/*.tex **/*.sty **/*.cls )
+if [[ ${files[0]+present} ]]; then
+    latexindent -w -l="$PWD/.latexindent.yaml" -c=.aux/ "${files[@]}"
+fi
+"""
+
+#
+# Containers
+
+# Docker
+[tasks."docker:build-image"]
+description = "Build the thesis container image with Docker"
+run = "docker build -t ulo-thesis:latest -f Containerfile ."
+
+[tasks."docker:shell"]
+description = "Open an interactive thesis container using Docker"
+run = 'docker run --rm -it -v "$PWD:/work" -w /work ulo-thesis:latest bash -i'
+
+[tasks."docker:build"]
+description = "Build the thesis PDF using Docker"
+run = 'docker run --rm -v "$PWD:/work" -w /work ulo-thesis:latest mise run build'
+
+[tasks."docker:format"]
+description = "Format LaTeX sources using Docker"
+run = 'docker run --rm -v "$PWD:/work" -w /work ulo-thesis:latest mise run format'
+
+[tasks."docker:clean"]
+description = "Clean LaTeX build artifacts using Docker"
+run = 'docker run --rm -v "$PWD:/work" -w /work ulo-thesis:latest mise run clean'
+
+
+# Podman
+[tasks."pod:build-image"]
+description = "Build the thesis container image with Podman"
+run = "podman build -t ulo-thesis:latest -f Containerfile ."
+
+[tasks."pod:shell"]
+description = "Open an interactive thesis container using Podman"
+run = 'podman run --rm -it --userns=keep-id -v "$PWD:/work:Z" -w /work localhost/ulo-thesis:latest bash -i'
+
+[tasks."pod:build"]
+description = "Build the thesis PDF using Podman"
+run = 'podman run --rm --userns=keep-id -v "$PWD:/work:Z" -w /work localhost/ulo-thesis:latest mise run build'
+
+[tasks."pod:format"]
+description = "Format LaTeX sources using Podman"
+run = 'podman run --rm --userns=keep-id -v "$PWD:/work:Z" -w /work localhost/ulo-thesis:latest mise run format'
+
+[tasks."pod:clean"]
+description = "Clean LaTeX build artifacts using Podman"
+run = 'podman run --rm --userns=keep-id -v "$PWD:/work:Z" -w /work localhost/ulo-thesis:latest mise run clean'
+
+#
+# Setup
+
+[tasks.setup]
+description = "Setup post install dependencies"
+run = [
+  { task = "perl:install" },
+  { task = "tlmgr:install" },
+  "mise reshim",
+]
+
+[tasks."perl:install"]
+description = "Install Perl dependencies for latexindent"
+run = [
+  "mise exec -- perl -MCPAN -e 'install App::cpanminus'",
+  "mise exec -- cpanm YAML::Tiny",
+  "mise exec -- cpanm File::HomeDir",
+]
+
+[tasks."tlmgr:install"]
+description = "Install LaTeX packages required by the project"
+depends = ["fix:fonts"]
+run = """
+tlmgr update --self
+tlmgr install \
+    xltabular \
+    ltablex \
+    titling \
+    glossaries \
+    glossaries-english \
+    datetime2 \
+    datetime2-english \
+    tracklang \
+    datatool \
+    minted \
+    silence \
+    blindtext \
+    newpx \
+    biblatex-ieee \
+    todonotes \
+    latexindent \
+    chktex
+"""
+
+#
+# Environment fixes
+
+[tasks."fix:fonts"]
+description = "Fix Fontconfig for mise TinyTeX"
+run = """
+set -eu
+
+echo "Checking TinyTeX font configuration..."
+
+latex_path="$(mise which latex)"
+
+# latex is expected to be:
+# <tinytex-root>/bin/<platform>/latex
+tinytex_root="$(dirname "$(dirname "$(dirname "$latex_path")")")"
+
+# Tinytex fontconfig paths
+tinytex_fontconfig="$tinytex_root/texmf-var/fonts/conf/texlive-fontconfig.conf"
+
+# User fontconfig paths
+fontconfig_dir="${XDG_CONFIG_HOME:-$HOME/.config}/fontconfig/conf.d"
+fontconfig_file="$fontconfig_dir/09-mise-tinytex.conf"
+state_file="$fontconfig_dir/.mise-tinytex-state"
+
+if [ -f "$state_file" ] &&
+   [ "$(cat "$state_file")" = "$tinytex_root" ] &&
+   [ -f "$fontconfig_file" ]; then
+    echo "Font configuration is already up to date."
+    exit 0
+fi
+
+echo "Updating TinyTeX font config..."
+
+mkdir -p "$fontconfig_dir"
+
+sed "s|/home/runner/.TinyTeX|$tinytex_root|g" \
+    "$tinytex_fontconfig" \
+    > "$fontconfig_file"
+
+printf '%s\\n' "$tinytex_root" > "$state_file"
+
+echo "Rebuilding Fontconfig cache..."
+fc-cache -f
+
+echo "TinyTeX font configuration complete."
+"""

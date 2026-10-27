@@ -1,0 +1,54 @@
+defaultIndent: "    "
+
+# Don't indent the preamble
+indentPreamble: 0
+
+# Remove trailing whitespace after formatting
+removeTrailingWhitespace:
+  beforeProcessing: 0
+  afterProcessing: 1
+
+# Preserve verbatim content
+verbatimEnvironments:
+  verbatim: 1
+  lstlisting: 1
+  minted: 1
+
+verbatimCommands:
+  verb: 1
+  lstinline: 1
+
+# Indent list contents
+indentAfterItems:
+  itemize: 1
+  enumerate: 1
+  description: 1
+  list: 1
+
+# Align table columns and row endings
+lookForAlignDelims:
+  tabular:
+    delims: 1
+    alignDoubleBackSlash: 1
+    spacesBeforeDoubleBackSlash: 1
+    multiColumnGrouping: 0
+    alignRowsWithoutMaxDelims: 1
+    spacesBeforeAmpersand: 1
+    spacesAfterAmpersand: 1
+    justification: left
+  tabularx:
+    delims: 1
+  longtable: 1
+  array: 1
+  align: 1
+  align*: 1
+  alignat: 1
+  alignat*: 1
+  aligned: 1
+  cases: 1
+
+# Preserve blank lines; collapse multiple blank lines to one
+modifyLineBreaks:
+  preserveBlankLines: 1
+  condenseMultipleBlankLinesInto: 2
+

@@ -1,3 +1,42 @@
 {
-    "latex-workshop.latex.recipe.default": "latexmk (latexmkrc)"
+  "latex-workshop.latex.autoBuild.run": "onSave",
+  "latex-workshop.formatting.latex": "latexindent",
+  "latex-workshop.formatting.latexindent.args": [
+    "-c",
+    "%DIR%/",
+    "%TMPFILE%",
+    "-y=defaultIndent: '%INDENT%'"
+  ],
+  "latex-workshop.linting.chktex.enabled": true,
+  "latex-workshop.linting.chktex.exec.args": [
+    "-wall",
+    "-n1",
+    "-n10",
+    "-n21",
+    "-n22",
+    "-n24",
+    "-n30",
+    "-n38",
+    "-e16",
+    "-q"
+  ],
+  "latex-workshop.latex.recipe.default": "mise build",
+  "latex-workshop.latex.tools": [
+    {
+      "name": "mise build",
+      "command": "mise",
+      "args": [
+        "run",
+        "build"
+      ]
+    }
+  ],
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "mise build",
+      "tools": [
+        "mise build"
+      ]
+    }
+  ]
 }

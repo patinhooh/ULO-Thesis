@@ -11,6 +11,10 @@
 \NewDocumentCommand{\CoSupervisorTitle}{m}{\newcommand{\GetCoSupervisorTitle}{#1}}
 \NewDocumentCommand{\SecCoSupervisor}{m}{\newcommand{\GetSecCoSupervisor}{#1}}
 \NewDocumentCommand{\SecCoSupervisorTitle}{m}{\newcommand{\GetSecCoSupervisorTitle}{#1}}
+% If you need more Supervisors, you can add new commands here and define them in Metadata/Metadata.tex
+% Example:
+% \NewDocumentCommand{\ThiCoSupervisor}{m}{\newcommand{\GetThiCoSupervisor}{#1}}
+% \NewDocumentCommand{\ThiCoSupervisorTitle}{m}{\newcommand{\GetThiCoSupervisorTitle}{#1}}
 \NewDocumentCommand{\Subtitle}{m}{\newcommand{\GetSubtitle}{#1}}
 \NewDocumentCommand{\University}{m}{\newcommand{\GetUniversity}{#1}}
 \NewDocumentCommand{\School}{m}{\newcommand{\GetSchool}{#1}}
@@ -43,6 +47,6 @@
         pdfauthor={\GetFirstAuthor},
         pdftitle={\GetTitle},
         pdfproducer={LaTeX},
-        pdfcreator={LuaLaTeX}
+        pdfcreator={XeLaTeX}
     }
 }

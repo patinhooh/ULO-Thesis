@@ -1,9 +1,9 @@
 %%% Bibliography %%%
 \usepackage[
-	backend=biber, % Use Biber for bibliography compilation.
-	citestyle=authoryear, % Style for in-text citations.
-	bibstyle=authoryear, % Style for the bibliography.
-	sorting=nyt, % Sort references by name, year, and title.
+    backend=biber, % Use Biber for bibliography compilation.
+    citestyle=numeric-comp, % Style for in-text citations.
+    bibstyle=ieee, % Style for the bibliography.
+    sorting=none, % Sort references by name, year, and title.
     natbib=true, % Enable natbib compatibility.
     dashed=false, % Always display author names in the bibliography.
     uniquelist=false, % Display only the first author (e.g., Author et al., Year).
@@ -28,9 +28,10 @@
         #1%
         \ifbool{cbx:parens}
         {\bibcloseparen\global\boolfalse{cbx:parens}}
-    {}}%
+        {}
+    }%
 }
-    
+
 \savebibmacro{cite}
 \savebibmacro{textcite}
 \renewbibmacro*{cite}{%
@@ -38,29 +39,29 @@
         \restorebibmacro{cite}%
         \usebibmacro{cite}%
     }}
-    
+
 \renewbibmacro*{textcite}{%
     \ifboolexpr{
-        ( not test {\iffieldundef{prenote}} and
-          test {\ifnumequal{\value{citecount}}{1}} )
+        (not test {\iffieldundef{prenote}} and
+        test {\ifnumequal{\value{citecount}}{1}})
         or
-        ( not test {\iffieldundef{postnote}} and
-          test {\ifnumequal{\value{citecount}}{\value{citetotal}}} )
+        (not test {\iffieldundef{postnote}} and
+        test {\ifnumequal{\value{citecount}}{\value{citetotal}}})
     }
     {\DeclareFieldAlias{textcitehyperref}{noformat}}
     {}%
     \printtext[textcitehyperref]{%
-    \restorebibmacro{textcite}%
-    \usebibmacro{textcite}}%
+        \restorebibmacro{textcite}%
+        \usebibmacro{textcite}}%
 }
 
 % Hyperlink settings.
 \hypersetup{
     bookmarksnumbered, % Enables the chapter and section numbers within the PDF bookmarks.
-	colorlinks=true, % Enable colored text for links.
-	urlcolor=maincolor, % Color for \url and \href links.
-	linkcolor=maincolor, % Color for internal links (e.g., \nameref).
-	citecolor=maincolor, % Color for citation links.
+    colorlinks=true, % Enable colored text for links.
+    urlcolor=maincolor, % Color for \url and \href links.
+    linkcolor=maincolor, % Color for internal links (e.g., \nameref).
+    citecolor=maincolor, % Color for citation links.
 }
 
 % Add a "." after the number in the PDF bookmark.

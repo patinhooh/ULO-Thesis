@@ -39,6 +39,10 @@ This repository contains all the <b>source code for the template</b>, organised 
 This template is a fork of <a href="https://github.com/joseareia/ipleiria-thesis" target="_blank">IPLeiria Thesis</a>, originally created by <a href="https://github.com/joseareia" target="_blank">José Areia</a> for the Polytechnic University of Leiria. It has been adapted here for the University of Leiria and Oeste (ULO): institution branding and logos, document class and file naming, and several structural and content changes throughout. All credit for the original design and engineering of the template goes to José Areia — please consider starring the [original repository](https://github.com/joseareia/ipleiria-thesis) as well. See [CHANGELOG.md](CHANGELOG.md) for a full list of differences from the upstream template.
 
 ## Installation and Documentation
+
+> [!note]
+> For this fork, see the [Workflows Guide](WORKFLOWS.md) for build workflows and development environment setup.
+
 This template is compiled with **LuaLaTeX** (with `--shell-escape`, required by `minted`). Running `make` builds it through `latexmk`, which picks up the engine and options from [.latexmkrc](.latexmkrc); `make TOOL=rubber` uses `rubber` instead — see the included [Makefile](Makefile) for the available build commands. Refer to the in-document "Comprehensive User Guide" chapter (built into the template itself) for detailed instructions on customising metadata, chapters, and class options.
 
 ## Languages

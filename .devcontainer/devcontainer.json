@@ -1,0 +1,17 @@
+{
+  "name": "ulo-thesis",
+  "build": {
+    "dockerfile": "../Containerfile",
+    "context": ".."
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "james-yu.latex-workshop",
+        "tecosaur.latex-utilities"
+      ]
+    }
+  },
+  "remoteUser": "latex",
+  "updateRemoteUserUID": true
+}
