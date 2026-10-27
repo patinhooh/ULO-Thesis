@@ -27,6 +27,7 @@ description = "Watch and rebuild"
 run = "latexmk -pvc"
 
 [tasks.format]
+alias="fmt"
 description = "Format all LaTeX source files"
 run = """
 shopt -s globstar nullglob
@@ -35,6 +36,13 @@ files=( **/*.tex **/*.sty **/*.cls )
 if [[ ${files[0]+present} ]]; then
     latexindent -w -l="$PWD/.latexindent.yaml" -c=.aux/ "${files[@]}"
 fi
+"""
+
+[tasks.check]
+alias="chk"
+description = "Check all LaTeX source files"
+run = """
+chktex -v0 ULOMain.tex
 """
 
 #
@@ -115,6 +123,7 @@ tlmgr install \
     glossaries-english \
     datetime2 \
     datetime2-english \
+    babel-portuges \
     tracklang \
     datatool \
     minted \

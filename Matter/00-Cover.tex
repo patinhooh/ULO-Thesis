@@ -1,21 +1,21 @@
 \ifthenelse{\equal{\CoverOption}{classic}}{
     \newcommand\BackgroundPicCover{%
-    \put(0,0){%
-    \parbox[b][\paperheight]{\paperwidth}{%
-    \vfill
-    \centering
-    \includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{Figures/Theme/Cover-BG.pdf}%
-    \vfill
-    }}}
+        \put(0,0){%
+            \parbox[b][\paperheight]{\paperwidth}{%
+                \vfill
+                \centering
+                \includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{Figures/Theme/Cover-BG.pdf}%
+                \vfill
+            }}}
 }{
     \newcommand\BackgroundPicCover{%
-    \put(0,0){%
-    \parbox[b][\paperheight]{\paperwidth}{%
-    \vfill
-    \centering
-    \includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{Figures/Theme/Front-Page-BG.pdf}%
-    \vfill
-    }}}
+        \put(0,0){%
+            \parbox[b][\paperheight]{\paperwidth}{%
+                \vfill
+                \centering
+                \includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{Figures/Theme/Front-Page-BG.pdf}%
+                \vfill
+            }}}
 }
 
 \AddToShipoutPictureBG*{\BackgroundPicCover}
@@ -32,56 +32,56 @@
                 \includegraphics[width=0.485\linewidth]{Figures/Theme/Logotypes/ULO-ESTG-Logo-W.pdf}
             \end{figure}
         }{}
-        
+
         \ifthenelse{\equal{\SchoolOption}{esad}}{
             \begin{figure}
                 \includegraphics[width=0.485\linewidth]{Figures/Theme/Logotypes/IPLeiria-ESAD-Logo-W.pdf}
             \end{figure}
         }{}
-        
+
         \ifthenelse{\equal{\SchoolOption}{esslei}}{
             \begin{figure}
                 \includegraphics[width=0.485\linewidth]{Figures/Theme/Logotypes/IPLeiria-ESSLEI-Logo-W.pdf}
             \end{figure}
         }{}
-        
+
         \ifthenelse{\equal{\SchoolOption}{estm}}{
             \begin{figure}
                 \includegraphics[width=0.485\linewidth]{Figures/Theme/Logotypes/IPLeiria-ESTM-Logo-W.pdf}
             \end{figure}
         }{}
-        
+
         \ifthenelse{\equal{\SchoolOption}{esecs}}{
             \begin{figure}
                 \includegraphics[width=0.485\linewidth]{Figures/Theme/Logotypes/IPLeiria-ESECS-Logo-W.pdf}
             \end{figure}
         }{}
-        
+
     } {
         \ifthenelse{\equal{\SchoolOption}{estg}}{
             \begin{figure}
                 \includegraphics[width=0.485\linewidth]{Figures/Theme/Logotypes/ULO-ESTG-Logo-B.pdf}
             \end{figure}
         }{}
-        
+
         \ifthenelse{\equal{\SchoolOption}{esad}}{
             \begin{figure}
                 \includegraphics[width=0.485\linewidth]{Figures/Theme/Logotypes/IPLeiria-ESAD-Logo-B.pdf}
             \end{figure}
         }{}
-        
+
         \ifthenelse{\equal{\SchoolOption}{esslei}}{
             \begin{figure}
                 \includegraphics[width=0.485\linewidth]{Figures/Theme/Logotypes/IPLeiria-ESSLEI-Logo-B.pdf}
             \end{figure}
         }{}
-        
+
         \ifthenelse{\equal{\SchoolOption}{estm}}{
             \begin{figure}
                 \includegraphics[width=0.485\linewidth]{Figures/Theme/Logotypes/IPLeiria-ESTM-Logo-B.pdf}
             \end{figure}
         }{}
-        
+
         \ifthenelse{\equal{\SchoolOption}{esecs}}{
             \begin{figure}
                 \includegraphics[width=0.485\linewidth]{Figures/Theme/Logotypes/IPLeiria-ESECS-Logo-B.pdf}
@@ -92,7 +92,7 @@
     \vspace{5.5\baselineskip}
 
     % Title.
-	\noindent
+    \noindent
     \makebox[\textwidth][l]{%
         \parbox{\dimexpr\textwidth-4cm\relax}{
             \setstretch{1.03}
@@ -111,7 +111,7 @@
         }
     }
 
-    \vspace{35pt}  
+    \vspace{35pt}
 
     % Author.
     {\noindent\bfseries\fontsize{14}{19}\selectfont\GetFirstAuthor}
@@ -119,28 +119,28 @@
     \ifdefined\GetSecondAuthor
         \vspace{8pt}
         {\noindent\bfseries\fontsize{14}{19}\selectfont\GetSecondAuthor}
-	\fi
+    \fi
 
     \ifdefined\GetThirdAuthor
         \vspace{8pt}
         {\noindent\bfseries\fontsize{14}{19}\selectfont\GetThirdAuthor}
-	\fi
- 
-	\vfill
+    \fi
+
+    \vfill
 
     % School.
-	{\noindent\fontsize{10}{12}\selectfont\GetSchool}
-	
+    {\noindent\fontsize{10}{12}\selectfont\GetSchool}
+
     % Department.
-	{\noindent\fontsize{10}{12}\selectfont\GetDepartment}
+    {\noindent\fontsize{10}{12}\selectfont\GetDepartment}
 
     % Degree.
-	{\noindent\fontsize{10}{12}\selectfont\GetDegree}
+    {\noindent\fontsize{10}{12}\selectfont\GetDegree}
 
     % Course.
     \ifdefined\GetCourse
         {\noindent\fontsize{10}{12}\selectfont\GetCourse}
-	\fi
+    \fi
 
     \ifthenelse{\equal{\DocStageOption}{working}}{
         % Light blue on the dark classic cover, plain blue on the white one.
@@ -150,15 +150,15 @@
 
         \vspace{4pt}
         {\noindent\fontsize{8}{10}\selectfont\textcolor{draftcolor}{\ByLanguage
-            {To remove this note, set \texttt{docstage=final} in the class options of \texttt{ULOMain.tex}.}
-            {Para remover esta nota, defina \texttt{docstage=final} nas opções da classe em \texttt{ULOMain.tex}.}}}
+                {To remove this note, set \texttt{docstage=final} in the class options of \texttt{ULOMain.tex}.}
+                {Para remover esta nota, defina \texttt{docstage=final} nas opções da classe em \texttt{ULOMain.tex}.}}}
         \vspace{48pt}
     }{
         \vspace{125pt}
     }
 
     % Local & Date.
-	{\noindent\fontsize{10}{12}\selectfont\GetDate}
+    {\noindent\fontsize{10}{12}\selectfont\GetDate}
 
     \vspace{68pt}
 \end{titlepage}

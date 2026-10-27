@@ -11,7 +11,11 @@
 \NewDocumentCommand{\CoSupervisorTitle}{m}{\newcommand{\GetCoSupervisorTitle}{#1}}
 \NewDocumentCommand{\SecCoSupervisor}{m}{\newcommand{\GetSecCoSupervisor}{#1}}
 \NewDocumentCommand{\SecCoSupervisorTitle}{m}{\newcommand{\GetSecCoSupervisorTitle}{#1}}
-% If you need more Supervisors, you can add new commands here and define them in Metadata/Metadata.tex
+
+% If you need more Supervisors, you will need to modify the following locations:
+% add new commands in here
+% add printing in Matter/01-Front-Page.tex
+% and define them in Metadata/Metadata.tex
 % Example:
 % \NewDocumentCommand{\ThiCoSupervisor}{m}{\newcommand{\GetThiCoSupervisor}{#1}}
 % \NewDocumentCommand{\ThiCoSupervisorTitle}{m}{\newcommand{\GetThiCoSupervisorTitle}{#1}}
@@ -33,12 +37,12 @@
 % Document version command.
 \NewDocumentCommand{\DocumentVersion}{m}{%
     \newcommand{\GetDocumentVersion}{\color{black}{%
-        \ifthenelse{\equal{\LanguageOption}{portuguese}}{%
-            \textit{Versão Preliminar #1}%
-        }{%
-            \textit{Draft Version #1}%
-        }%
-    }}%
+            \ifthenelse{\equal{\LanguageOption}{portuguese}}{%
+                \textit{Versão Preliminar #1}%
+            }{%
+                \textit{Draft Version #1}%
+            }%
+        }}%
 }
 
 % Define the PDF document metadata.

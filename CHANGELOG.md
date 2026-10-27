@@ -17,6 +17,11 @@ All notable differences accumulated across this fork and its upstream forks, rel
 - Build tooling (`Makefile`, `.latexmkrc`, GitHub Actions workflow) updated to match.
 - Moved appendix source files from `Chapters/Appendices/` to `Appendices/` and the annex source file from `Chapters/Annexes/` to `Annexes/`, updating the paths in `ULOMain.tex`.
 
+## Formatting and consistency
+
+- Standardised LaTeX typography, including numeric ranges, quotation marks, and mathematical list notation across the thesis content.
+- Improved indentation and formatting of LaTeX environments, listings, tables, and front-matter elements for consistency and readability.
+
 ## Versioning
 
 - The template has its own version numbering, defined once in `\TemplateVersion` (`ULOMain.tex`) and used in the class and in Chapter 1. Version 1.0.0 is the fork as first published; 2.0.0 adds the changes below (language handling, metadata fields). It is based on IPLeiria Thesis 2.2.13.

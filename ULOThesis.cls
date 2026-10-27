@@ -16,104 +16,104 @@
 \ExplSyntaxOn
 
 \cs_new:Npn \ULOThesis_check_color:n #1 {
-  \tl_set:Nn \l_tmpa_tl { #1 }
-  \color_set:nn { \l_tmpa_tl } { #1 }
+    \tl_set:Nn \l_tmpa_tl { #1 }
+    \color_set:nn { \l_tmpa_tl } { #1 }
 }
 
 \keys_define:nn { ULOThesis } {
     school .choices:nn =
         { estg, esecs, esslei, esad, estm }
         { \tl_gset:Nn \g_ULOThesis_myschool_tl { #1 } },
-    school / unknown .code:n = 
+    school / unknown .code:n =
         { \ClassWarningNoLine{ULOThesis}
-        {Specified~'school'~not~available.~Defaulting~to~'estg'} },
+            {Specified~'school'~not~available.~Defaulting~to~'estg'} },
     school .default:n = { estg },
     school .initial:n = { estg },
 
     coverstyle .choices:nn =
         { classic, bw }
         { \tl_gset:Nn \g_ULOThesis_mycover_tl { #1 } },
-    coverstyle / unknown .code:n = 
+    coverstyle / unknown .code:n =
         { \ClassWarningNoLine{ULOThesis}{Specified~'coverstyle'~not~available.~Defaulting~to~'classic'} },
     coverstyle .default:n = { classic },
     coverstyle .initial:n = { classic },
 
-    language .choices:nn = 
-        { english, portuguese } 
+    language .choices:nn =
+        { english, portuguese }
         { \tl_gset:Nn \g_ULOThesis_mylanguage_tl { #1 } },
-    language / unknown .code:n = 
+    language / unknown .code:n =
         { \ClassWarningNoLine{ULOThesis}{Specified~'language'~not~available.~Defaulting~to~'english'} },
     language .default:n = { english },
     language .initial:n = { english },
 
-    chapterstyle .choices:nn = 
-        { classic, fancy, modern } 
+    chapterstyle .choices:nn =
+        { classic, fancy, modern }
         { \tl_gset:Nn \g_ULOThesis_style_tl { #1 } },
-    chapterstyle / unknown .code:n = 
+    chapterstyle / unknown .code:n =
         { \ClassWarningNoLine{ULOThesis}{Specified~'chapterstyle'~not~available.~Defaulting~to~'classic'} },
     chapterstyle .default:n = { classic },
     chapterstyle .initial:n = { classic },
 
-    docstage .choices:nn = 
-        { working, final } 
+    docstage .choices:nn =
+        { working, final }
         { \tl_gset:Nn \g_ULOThesis_docstage_tl { #1 } },
-    docstage / unknown .code:n = 
+    docstage / unknown .code:n =
         { \ClassWarningNoLine{ULOThesis}{Specified~'docstage'~not~available.~Defaulting~to~'working'} },
     docstage .default:n = { working },
     docstage .initial:n = { working },
 
-    media .choices:nn = 
-        { paper, screen } 
+    media .choices:nn =
+        { paper, screen }
         { \tl_gset:Nn \g_ULOThesis_media_tl { #1 } },
-    media / unknown .code:n = 
+    media / unknown .code:n =
         { \ClassWarningNoLine{ULOThesis}{Specified~'media'~not~available.~Defaulting~to~'paper'} },
     media .default:n = { paper },
     media .initial:n = { paper },
 
     linkcolor .code:n = {
-        \tl_gset:Nn \g_ULOThesis_linkcolor_tl { #1 }
-        \ULOThesis_check_color:n { #1 }
-        \tl_if_eq:NNTF \l_tmpa_tl \q_no_value {
-            \tl_gset:Nn \g_ULOThesis_linkcolor_tl { black }
-            \ClassWarningNoLine{ULOThesis}{Specified~'linkcolor'~not~available.~Defaulting~to~'black'}
-        }
-    },
+            \tl_gset:Nn \g_ULOThesis_linkcolor_tl { #1 }
+            \ULOThesis_check_color:n { #1 }
+            \tl_if_eq:NNTF \l_tmpa_tl \q_no_value {
+                \tl_gset:Nn \g_ULOThesis_linkcolor_tl { black }
+                \ClassWarningNoLine{ULOThesis}{Specified~'linkcolor'~not~available.~Defaulting~to~'black'}
+            }
+        },
     linkcolor .default:n = { black },
     linkcolor .initial:n = { black },
 
-    doctype .choices:nn = 
-        { thesis, report } 
+    doctype .choices:nn =
+        { thesis, report }
         { \tl_gset:Nn \g_ULOThesis_doctype_tl { #1 } },
-    doctype / unknown .code:n = 
+    doctype / unknown .code:n =
         { \ClassWarningNoLine{ULOThesis}{Specified~'doctype'~not~available.~Defaulting~to~'thesis'} },
     doctype .default:n = { thesis },
     doctype .initial:n = { thesis },
 
-    bookprint .choices:nn = 
-        { true, false } 
+    bookprint .choices:nn =
+        { true, false }
         { \tl_gset:Nn \g_ULOThesis_bookprint_tl { #1 } },
-    bookprint / unknown .code:n = 
+    bookprint / unknown .code:n =
         { \ClassWarningNoLine{ULOThesis}{Specified~'bookprint'~not~available.~Defaulting~to~'false'} },
     bookprint .default:n = { false },
     bookprint .initial:n = { false },
 
-    aiacknowledgement .choices:nn = 
-        { true, false } 
+    aiacknowledgement .choices:nn =
+        { true, false }
         { \tl_gset:Nn \g_ULOThesis_aiacknowledgement_tl { #1 } },
-    aiacknowledgement / unknown .code:n = 
+    aiacknowledgement / unknown .code:n =
         { \ClassWarningNoLine{ULOThesis}{Specified~'aiacknowledgement'~not~available.~Defaulting~to~'true'} },
     aiacknowledgement .default:n = { true },
     aiacknowledgement .initial:n = { true },
 
-    listprefix .choices:nn = 
-        { true, false } 
+    listprefix .choices:nn =
+        { true, false }
         { \tl_gset:Nn \g_ULOThesis_listprefix_tl { #1 } },
-    listprefix / unknown .code:n = 
+    listprefix / unknown .code:n =
         { \ClassWarningNoLine{ULOThesis}{Specified~'listprefix'~not~available.~Defaulting~to~'false'} },
     listprefix .default:n = { false },
     listprefix .initial:n = { false },
-    
-    unknown .code:n = 
+
+    unknown .code:n =
         { \ClassWarningNoLine{ULOThesis}{An~unknown~option~was~ignored.~Please~check~the~documentation~to~see~the~available~options} }
 }
 
@@ -136,7 +136,7 @@
 \LoadClass[a4paper,11pt,twoside]{report}
 
 %%% Load Babel Package (Language) %%%
-\expandafter\RequirePackage\expandafter[\LanguageOption]{babel}
+\RequirePackage[\LanguageOption]{babel}
 
 %%% Required Packages %%%
 \RequirePackage{ifthen} % Provides conditional statements.
@@ -159,8 +159,8 @@
 \RequirePackage{titling} % Control over title and titlepage formatting.
 \RequirePackage[toc,page]{appendix} % Formatting for appendices.
 \RequirePackage[bookmarks,pdfusetitle,pdfview=FitH]{hyperref} % Hyperlinks and PDF metadata.
-    % pdfview=FitH: internal links/bookmarks fit the page width instead of
-    % jumping to a raw (x,y) coordinate at the viewer's current zoom level.
+% pdfview=FitH: internal links/bookmarks fit the page width instead of
+% jumping to a raw (x,y) coordinate at the viewer's current zoom level.
 \RequirePackage[symbols,acronym]{glossaries} % Create glossaries and acronyms.
 \glsdisablehyper
 \RequirePackage[calc,datesep={/}]{datetime2} % Enhanced date and time formatting.

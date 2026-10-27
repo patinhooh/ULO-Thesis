@@ -19,7 +19,7 @@
     \end{center}
     \vspace*{\fill}
     \clearpage
-} 
+}
 
 % Command that will combine a plain page style and a blank one.
 \newcommand{\plainblankpage}{\thispagestyle{plain}\blankpage}
@@ -72,7 +72,7 @@
 \newcommand{\blocktitle}[1]{%
     \ifthenelse{\equal{\LanguageOption}{portuguese}}{%
         \ifstrequal{#1}{todo}{Por Fazer}{\ifstrequal{#1}{tip}{Dica}{%
-        \ifstrequal{#1}{warning}{Aviso}{\ifstrequal{#1}{note}{Nota}{\capitalisewords{#1}}}}}%
+                \ifstrequal{#1}{warning}{Aviso}{\ifstrequal{#1}{note}{Nota}{\capitalisewords{#1}}}}}%
     }{%
         \ifstrequal{#1}{todo}{To-Do}{\capitalisewords{#1}}%
     }%
@@ -112,7 +112,7 @@
 \newcommand{\overwritecolor}[2]{%
     \textcolor{#1}{%
         \renewcommand\color[2][]{}%
-    #2}%
+        #2}%
 }
 
 % Wrapping bot glossary and acronyms commands.
