@@ -1,13 +1,13 @@
 # Changelog
 
-All notable differences between this fork and the upstream [IPLeiria Thesis](https://github.com/joseareia/ipleiria-thesis) template by José Areia are documented here.
+All notable differences accumulated across this fork and its upstream forks, relative to the original [IPLeiria Thesis](https://github.com/joseareia/ipleiria-thesis) template by José Areia, are documented here. The intermediate [ULO Thesis](https://github.com/mfrade/ULO-thesis) fork is also part of this project's history.
 
 ## Branding
 
 - Replaced the Polytechnic of Leiria / IPLeiria ESTG logo with the University of Leiria and Oeste (ULO) / ESTG logo, in both light-background and dark-background (cover) variants.
 - Replaced "Polytechnic University of Leiria" with "University of Leiria and Oeste" throughout the metadata, the cover, and the legal declaration text (PT/EN) in the Copyright page.
 - Removed the `utnfrba` school option (UTN-FRBA), whose logo was never included in the repository.
-- Reworked the README: new logo banner, screenshots regenerated from this fork's actual configuration, all links repointed to this repository, and an attribution section crediting the original author and project.
+- Updated the README with repository-specific links, support channels, and attribution to the original template and intermediate fork.
 
 ## Renamed files
 
@@ -24,7 +24,7 @@ All notable differences between this fork and the upstream [IPLeiria Thesis](htt
 ## Documentation
 
 - Added `WORKFLOWS.md` documenting local development with `mise`, VS Code Dev Containers, and container workflows.
-- Updated the README to link to the workflow guide.
+- Updated the README to link to the workflow guide and clarify that the original build methods remain available alongside the additional workflows introduced by this fork.
 
 ## Build
 
@@ -86,5 +86,6 @@ All notable differences between this fork and the upstream [IPLeiria Thesis](htt
 
 ## Repository
 
-- Removed the inherited .github/FUNDING.yml sponsorship configuration.
-- Detached from the upstream repository and published as a standalone public repository at [github.com/mfrade/ULO-thesis](https://github.com/mfrade/ULO-thesis).
+- Removed the inherited `.github/FUNDING.yml` sponsorship configuration.
+- Maintained as a fork of [mfrade/ULO-thesis](https://github.com/mfrade/ULO-thesis), which builds upon the original [IPLeiria Thesis](https://github.com/joseareia/ipleiria-thesis) template.
+- Fork-specific changes and development tooling are maintained at [patinhooh/ULO-Thesis](https://github.com/patinhooh/ULO-Thesis).
